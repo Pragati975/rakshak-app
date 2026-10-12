@@ -4,26 +4,19 @@
 
 Built with React, Capacitor and Firebase. Runs as a native Android app (`com.pragati.rakshak`).
 
-```html
-<!-- Add screenshots in docs/screenshots -->
-<p align="center">
-  <img src="docs/screenshots/home.png" width="30%" alt="Command dashboard" />
-  <img src="docs/screenshots/map.png" width="30%" alt="Live team map" />
-  <img src="docs/screenshots/mission-briefing.png" width="30%" alt="Mission briefing" />
-</p>
+## 📱 App Screenshots
 
-<p align="center">
-  <img src="docs/screenshots/alpha-team.png" width="30%" alt="Alpha team screen" />
-  <img src="docs/screenshots/bravo-team.png" width="30%" alt="Bravo team screen" />
-  <img src="docs/screenshots/comms.png" width="30%" alt="Communication screen" />
-</p>
+| Dashboard | Live Team Map | Mission Briefing |
+|:----:|:----:|:----:|
+| ![Dashboard](docs/screenshots/home.png) | ![Live Team Map](docs/screenshots/map.png) | ![Mission Briefing](docs/screenshots/mission%20briefing.png) |
 
-<p align="center">
-  <img src="docs/screenshots/alerts.png" width="30%" alt="Alerts screen" />
-  <img src="docs/screenshots/field.png" width="30%" alt="Field unit screen" />
-  <img src="docs/screenshots/settings.png" width="30%" alt="Settings screen" />
-</p>
-```
+| Alpha Team | Bravo Team | Communications |
+|:----:|:----:|:----:|
+| ![Alpha Team](docs/screenshots/alpha%20team.png) | ![Bravo Team](docs/screenshots/bravo%20team.png) | ![Communications](docs/screenshots/comms.png) |
+
+| Alerts | Field Unit | Settings |
+|:----:|:----:|:----:|
+| ![Alerts](docs/screenshots/alerts.png) | ![Field Unit](docs/screenshots/field.png) | ![Settings](docs/screenshots/settings.png) |
 
 
 ## What it does

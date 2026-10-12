@@ -1,0 +1,14 @@
+/build/*
+!/build/.npmkeep
+node_modules
+dist
+.env
+.env.local
+*.jks
+*.keystore
+android/local.properties
+android/.gradle
+android/app/build
+android/build
+.firebase
+functions/node_modules

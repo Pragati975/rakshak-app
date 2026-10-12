@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RAKSHAK</string>
+    <string name="cd_app_logo">RAKSHAK logo</string>
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_map">Tactical Map</string>
+    <string name="nav_alerts">Alerts</string>
+    <string name="action_retry">Retry</string>
+    <string name="action_open_map">Open Tactical Map</string>
+    <string name="loading_units">Loading units</string>
+    <string name="demo_mode_badge">DEMO MODE</string>
+    <string name="empty_alerts_title">All clear</string>
+    <string name="empty_alerts_body">No active alerts. The situation is stable.</string>
+    <string name="error_generic">Something went wrong. Please try again.</string>
+    <string name="error_offline">You are offline. Showing last known data.</string>
+</resources>

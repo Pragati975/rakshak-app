@@ -1,0 +1,16 @@
+node_modules
+dist
+.env
+.env.local
+*.jks
+*.keystore
+local.properties
+.gradle
+.idea
+build
+app/build
+android/app/build
+android/build
+android/.gradle
+.firebase
+functions/node_modules

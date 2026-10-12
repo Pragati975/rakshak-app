@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "676928179989",
+    "firebase_url": "https://rakshak-73a5a-default-rtdb.firebaseio.com",
+    "project_id": "rakshak-73a5a",
+    "storage_bucket": "rakshak-73a5a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676928179989:android:ca99fbf2c8b6264d7e631c",
+        "android_client_info": {
+          "package_name": "com.example.rakshak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "676928179989-rfnq3a1gj34qb5p16hnu58fu27u3har3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfRBxMRQCWZH_3ZSxfDmX5HStOUNzyEog"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "676928179989-rfnq3a1gj34qb5p16hnu58fu27u3har3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676928179989:android:2ad9a302f3f2ce107e631c",
+        "android_client_info": {
+          "package_name": "com.pragati.rakshak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "676928179989-rfnq3a1gj34qb5p16hnu58fu27u3har3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfRBxMRQCWZH_3ZSxfDmX5HStOUNzyEog"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "676928179989-rfnq3a1gj34qb5p16hnu58fu27u3har3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

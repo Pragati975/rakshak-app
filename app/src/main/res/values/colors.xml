@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark-first colour palette (tactical command centre) -->
+    <color name="background_dark">#FF0A0E13</color>
+    <color name="surface_dark">#FF10161D</color>
+    <color name="surface_elevated_dark">#FF16202A</color>
+</resources>

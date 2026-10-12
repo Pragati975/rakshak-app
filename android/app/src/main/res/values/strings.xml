@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Rakshak</string>
+    <string name="title_activity_main">Rakshak</string>
+    <string name="package_name">com.pragati.rakshak</string>
+    <string name="custom_url_scheme">com.pragati.rakshak</string>
+</resources>

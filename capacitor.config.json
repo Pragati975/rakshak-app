@@ -1,0 +1,7 @@
+{
+  "appId": "com.pragati.rakshak",
+  "appName": "Rakshak",
+  "webDir": "dist",
+  "android": { "useLegacyBridge": true }
+
+}

@@ -1,0 +1,95 @@
+rules_version = '2';
+
+// RAKSHAK security rules
+//  - Nobody is allowed in unless signed in AND they have a profile in users/{uid} (written by a commander).
+//  - Commanders can manage everything.
+//  - Field units can only touch their own unit, answer orders sent to them, raise/cancel alerts and chat.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() { return request.auth != null; }
+    function hasProfile() { return signedIn() && exists(/databases/$(database)/documents/users/$(request.auth.uid)); }
+    function profile() { return get(/databases/$(database)/documents/users/$(request.auth.uid)).data; }
+    function isCommander() { return hasProfile() && profile().role == 'commander'; }
+    function isField() { return hasProfile() && profile().role == 'field'; }
+    function ownUnit(id) { return isField() && profile().unitId == int(id); }
+    function changed() { return request.resource.data.diff(resource.data).affectedKeys(); }
+
+    // Team roster: name and role of each field member, readable by anyone signed in (no emails or tokens here).
+    match /roster/{uid} {
+      allow read: if hasProfile();
+      allow create, update: if isCommander();
+      allow delete: if isCommander() || (signedIn() && request.auth.uid == uid);
+    }
+
+    // Who is who. Only a commander creates profiles; people can only update their own push token.
+    match /users/{uid} {
+      allow read: if signedIn() && (request.auth.uid == uid || isCommander());
+      allow create: if isCommander();
+      allow update: if isCommander() || (request.auth.uid == uid && changed().hasOnly(['fcmToken']));
+      allow delete: if signedIn() && (request.auth.uid == uid || isCommander());
+    }
+
+    match /units/{id} {
+      allow read: if hasProfile();
+      allow create, delete: if isCommander();
+      allow update: if isCommander() || (
+        ownUnit(id)
+        && changed().hasOnly(['status', 'battery', 'lastSeen', 'lastUpdate', 'lat', 'lng', 'location'])
+        && (!('status' in changed()) || request.resource.data.status in ['safe', 'critical'])
+      );
+    }
+
+    match /mapUnits/{id} {
+      allow read: if hasProfile();
+      allow create, delete: if isCommander();
+      allow update: if isCommander() || (
+        ownUnit(id)
+        && changed().hasOnly(['status', 'x', 'y'])
+        && (!('status' in changed()) || request.resource.data.status in ['safe', 'critical'])
+      );
+    }
+
+    match /alerts/{id} {
+      allow read: if hasProfile();
+      allow create: if hasProfile() && request.resource.data.title is string;
+      // Commanders acknowledge and resolve; a field unit can resolve (cancel its own SOS)
+      allow update: if isCommander() || (isField() && changed().hasOnly(['resolved', 'acknowledged']));
+      allow delete: if isCommander();
+    }
+
+    match /messages/{id} {
+      allow read: if hasProfile();
+      allow create: if hasProfile() && request.resource.data.text is string && request.resource.data.text.size() <= 500;
+      allow update: if false;
+      allow delete: if isCommander();
+    }
+
+    // Missions: everyone can read, only commanders change them
+    match /missions/{id} {
+      allow read: if hasProfile();
+      allow create, update, delete: if isCommander();
+    }
+
+    // Ping / sync / redeploy orders: commanders send, the addressed unit answers
+    match /orders/{id} {
+      allow read: if hasProfile();
+      allow create: if isCommander();
+      allow update: if isCommander() || (
+        isField() && resource.data.to == profile().unitId && changed().hasOnly(['status', 'respondedAt'])
+      );
+      allow delete: if isCommander();
+    }
+
+    // Map centre, set by the first phone that reports a GPS position
+    match /config/{id} {
+      allow read: if hasProfile();
+      allow create: if hasProfile();
+      allow update, delete: if isCommander();
+    }
+
+    match /{other=**} {
+      allow read, write: if false;
+    }
+  }
+}
